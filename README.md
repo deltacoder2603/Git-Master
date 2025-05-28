@@ -1,9 +1,5 @@
 # GitMaster
 
-AI-Powered GitHub Repository Analysis & Q&A
-
-## Overview
-
 **GitMaster** is a modern web application that leverages AI to analyze any public GitHub repository and provides intelligent, context-aware answers to your questions about the codebase. Instantly unlock insights, understand architecture, and explore dependencies with a chat-based interface.
 
 ## Features
