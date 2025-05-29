@@ -290,85 +290,48 @@ export default function ChatPage() {
                     >
                       {message.type === "assistant" ? (
                         <div className="markdown-content text-sm leading-relaxed">
-                          <ReactMarkdown
-                            components={{
-                              // Block elements that should not be nested in <p>
-                              pre: ({ children }) => (
-                                <div className="relative rounded-md my-4">
-                                  <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto text-sm font-mono text-gray-300 border border-gray-700">
-                                    {children}
-                                  </pre>
-                                </div>
-                              ),
-                              code: ({ node, className, children, ...props }) => {
-                                return <CodeBlock className={className}>{children}</CodeBlock>
-                              },
-                              // Block elements
-                              div: ({ children }) => <div className="my-2">{children}</div>,
-                              blockquote: ({ children }) => (
-                                <div className="border-l-4 border-purple-500 pl-4 italic my-4 bg-gray-900/50 p-3 rounded-r">
+<ReactMarkdown
+                          components={{
+                            // Code block
+                            pre: ({ children }) => (
+                              <div className="my-4">
+                                <pre className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm text-gray-100 font-mono">
                                   {children}
-                                </div>
-                              ),
-                              // Headings
-                              h1: ({ children }) => (
-                                <div className="text-xl font-bold mt-6 mb-3 text-blue-400 border-b border-gray-700 pb-2">
-                                  {children}
-                                </div>
-                              ),
-                              h2: ({ children }) => (
-                                <div className="text-lg font-bold mt-5 mb-2 text-purple-400">{children}</div>
-                              ),
-                              h3: ({ children }) => (
-                                <div className="text-md font-bold mt-4 mb-2 text-pink-400">{children}</div>
-                              ),
-                              h4: ({ children }) => (
-                                <div className="text-sm font-bold mt-3 mb-1 text-blue-300">{children}</div>
-                              ),
-                              h5: ({ children }) => (
-                                <div className="text-sm font-semibold mt-3 mb-1 text-purple-300">{children}</div>
-                              ),
-                              h6: ({ children }) => (
-                                <div className="text-sm font-semibold mt-3 mb-1 text-pink-300">{children}</div>
-                              ),
-                              // Lists
-                              ul: ({ children }) => <div className="list-disc pl-6 my-3 space-y-1">{children}</div>,
-                              ol: ({ children }) => <div className="list-decimal pl-6 my-3 space-y-1">{children}</div>,
-                              li: ({ children }) => <div className="my-1">{children}</div>,
-                              // Links
-                              a: ({ href, children }) => (
-                                <a
-                                  href={href}
-                                  className="text-blue-400 hover:text-blue-300 underline"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
+                                </pre>
+                              </div>
+                            ),
+                            code: ({ node, className, children, ...props }) => {
+                              return (
+                                <code
+                                  className={`bg-gray-800 px-1 py-0.5 rounded text-sm text-gray-100 ${className || ""}`}
                                 >
                                   {children}
-                                </a>
-                              ),
-                              // Tables
-                              table: ({ children }) => (
-                                <div className="overflow-x-auto my-4">
-                                  <table className="min-w-full border border-gray-700 rounded-lg overflow-hidden">
-                                    {children}
-                                  </table>
-                                </div>
-                              ),
-                              thead: ({ children }) => <thead className="bg-gray-800">{children}</thead>,
-                              tbody: ({ children }) => <tbody>{children}</tbody>,
-                              tr: ({ children }) => <tr className="border-b border-gray-700">{children}</tr>,
-                              th: ({ children }) => (
-                                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-200">{children}</th>
-                              ),
-                              td: ({ children }) => <td className="px-4 py-2 text-sm text-gray-300">{children}</td>,
-                              // Horizontal rule
-                              hr: () => <div className="border-t border-gray-700 my-4" />,
-                              // Paragraphs
-                              p: ({ children }) => <div className="my-2 leading-relaxed">{children}</div>,
-                            }}
-                          >
-                            {message.content}
-                          </ReactMarkdown>
+                                </code>
+                              )
+                            },
+                            // Headings
+                            h1: ({ children }) => <h1 className="text-xl font-semibold mt-6 mb-2">{children}</h1>,
+                            h2: ({ children }) => <h2 className="text-lg font-semibold mt-5 mb-2">{children}</h2>,
+                            h3: ({ children }) => <h3 className="text-base font-semibold mt-4 mb-2">{children}</h3>,
+                            h4: ({ children }) => <h4 className="text-base mt-3 mb-1 font-medium">{children}</h4>,
+                            h5: ({ children }) => <h5 className="text-sm mt-2 mb-1 font-medium">{children}</h5>,
+                            h6: ({ children }) => <h6 className="text-sm mt-2 mb-1 text-gray-400">{children}</h6>,
+                            // Paragraph
+                            p: ({ children }) => <p className="mb-2">{children}</p>,
+                            // List
+                            ul: ({ children }) => <ul className="list-disc list-inside mb-2">{children}</ul>,
+                            ol: ({ children }) => <ol className="list-decimal list-inside mb-2">{children}</ol>,
+                            li: ({ children }) => <li className="ml-4">{children}</li>,
+                            // Blockquote
+                            blockquote: ({ children }) => (
+                              <blockquote className="border-l-4 border-purple-500 pl-4 italic text-gray-300 mb-4">
+                                {children}
+                              </blockquote>
+                            ),
+                          }}
+                        >
+                          {message.content}
+                        </ReactMarkdown>
                         </div>
                       ) : (
                         <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
