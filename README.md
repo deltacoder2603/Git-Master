@@ -1,5 +1,7 @@
 # 🚀 GitMaster
 
+**Backend Repository:** **https://github.com/deltacoder2603/Git-Master_backend**
+
 **GitMaster** is your AI-powered 🧠 developer assistant that analyzes **any public GitHub repository** and gives you **smart, context-aware answers**. Instantly **understand complex code**, **navigate dependencies**, and **explore architectures** — all in a sleek, chat-based interface! 💬✨
 
 ---
